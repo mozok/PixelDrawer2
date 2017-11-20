@@ -369,7 +369,7 @@ function startInit() {
 function buttonClick() {
   // save canvas image as data url (png format by default)
   var dataURL = document.getElementById('pixel-picker').toDataURL();
-
+  console.log(dataURL);
   // set canvasImg image src to dataURL
   // so it can be saved as an image
   //document.getElementById('canvasImg').src = dataURL;
@@ -420,8 +420,9 @@ function buttonClick() {
     dataResultForMCU += ',';
   }
 
-  dataResultForMCU += '}';
-  console.log(dataResultForMCU);
+  //dataResultForMCU += '}';
+  dataResultForMCU = dataResultForMCU.replace(/,$/,'}');
+  // console.log(dataResultForMCU);
 
 
 
