@@ -369,7 +369,7 @@ function startInit() {
 function buttonClick() {
   // save canvas image as data url (png format by default)
   dataURL = document.getElementById('pixel-picker').toDataURL();
-  //console.log(dataURL);
+  console.log(dataURL);
   // set canvasImg image src to dataURL
   // so it can be saved as an image
   document.getElementById('canvasImg').src = dataURL;
@@ -436,7 +436,7 @@ $(function () {
       buttonClick();
 
       var data = $('#dataToSend').serialize();
-      data += "&img=" + dataURL.replace(/data:image\/png;base64,/, '');
+      data += "&img=" + dataURL;//.replace(/data:image\/png;base64,/, '');
       //console.log(data);
       $.ajax({
         url: 'send.php',
