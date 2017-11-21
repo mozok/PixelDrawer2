@@ -333,7 +333,7 @@ body {
     transform: rotate(-1.5deg)
     }
 
-    .t_t {
+    /* .t_t {
         display: inline;
         position: relative;
         font: 200px Helvetica, Sans-Serif;
@@ -345,4 +345,15 @@ body {
         content: "Ім'я";
         position: absolute; left: 10px; top: 5px;
         color: rgba(255,0,0,0.5);   
+    } */
+
+    /* @font-face { font-family: Christmass; src: url('2000.ttf'); }  */
+    
+    .textDesign{
+        font-family: 'CyrillicChancellor', arial;
+        font-size: 30px; 
+        text-shadow: 4px 4px 4px #aaa;
+        /* text-transform: uppercase; */
+        /* letter-spacing: 3px; */
+        /* font-style: italic; */
     }

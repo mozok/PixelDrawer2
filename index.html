@@ -2,11 +2,14 @@
 <html>
 
 <head>
+        <meta charset="utf-8">
     <title>New Year Pixel Drawer</title>
 
-    <link rel="stylesheet" href="style.css">
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <link href="http://allfont.ru/allfont.css?fonts=cyrillicchancellor" rel="stylesheet" type="text/css" />
 
+    <link rel="stylesheet" href="style.css">
+    <!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script> -->
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script src="script.js"></script>
     <script src="pixel-picker.js"></script>
 
@@ -479,7 +482,7 @@
         </div>
     </div>
 
-    <img src="it9.png" alt="IT Shostka" style="float: right;width:200px;height:40px;margin-right:10px">
+    <img src="it9.png" alt="IT Shostka" style="float: right;width:200px;height:40px;margin:10px">
     <center>
         <canvas height="320" width="1280" id="pixel-picker" style='border: 5px solid black; border-radius: 5px;'></canvas>
     </center>
@@ -487,38 +490,28 @@
     <!-- <button onclick="buttonClick()" class="button"  align = 'center'>
             Save
          </button> -->
-    <div style="margin:10px;">
-            <!-- style="color: #111; font-family: 'Open Sans Condensed', sans-serif; font-size: 25px; font-weight: 700; line-height: 25px; padding: 20px 30px; text-transform: uppercase;" -->
-        <div class="t_t">
-            Ім'я</div>
-        <input type="text" id="name" size="30">
-        <div style="color: #CEF0D4; font-family: 'Rouge Script', cursive; font-size: 25px; font-weight: normal;  text-shadow: 1px 1px 2px #082b34;">
-            Місце роботи/навчання:</div>
-        <div style="color: #fff; font-family: 'Righteous', cursive; font-size: 25px; font-weight: normal;   text-transform: uppercase; text-shadow: 2px 2px 0 #000; ">
-            Місце роботи/навчання:</div>
-        <div style=" color: #CEF0D4; font-family: 'Lobster', cursive; font-size: 36px; font-weight: normal; line-height: 48px; margin: 0 0 18px; text-shadow: 1px 0 0 #fff; ">
-            Місце роботи/навчання:</div>
-        <div style="color: #CEF0D4; font-family: 'Oleo Script', cursive; font-size: 24px; font-weight: normal; line-height: 32px; margin: 0 0 18px; text-shadow: 1px 0 0 #fff;">
-            Місце роботи/навчання:</div>
-        <input type="text" id="work" size="30">
-        <div style="color: #a7e8f8; font-family: 'Julius Sans One', sans-serif; font-size: 22px; font-weight: bold;  text-shadow: 1px 1px 1px #082b34;">
-            Контактна адреса (email, facebook)</div>
+    <form id="dataToSend" style="margin:10px;">
+        <!-- style="color: #111; font-family: 'Open Sans Condensed', sans-serif; font-size: 25px; font-weight: 700; line-height: 25px; padding: 20px 30px; text-transform: uppercase;" -->
+        <label for="name" class="textDesign">
+            Iм'я:</label>
+            <br>
+        <input type="text" id="name" name="name" size="52">
+        <br>
+        <label class="textDesign" for="work">
+            Мiсце роботи/навчання:</label>
+            <br>
+        <input type="text" id="work" name="work" size="52">
+        <br>
+        <label class="textDesign" for="contact">
+            Контактна адреса (email, facebook): </label>
+            <br>
+        <input type="text" id="contact" name="contact" size="52">
+        <br>
+        <br>
+        <input id="submit" type="submit" name="submit" value="Вiдправити" class="textDesign"> </button><span></span>
+    </form>
+    <img id="canvasImg" alt="Right click to save me!">+
 
-        <input type="text" id="contact" size="30">
-        <br>
-        <br>
-        <input type="submit" value="Відправити" onclick="buttonClick()">
-    </div>
-    <span data-text="M"></span>
-    <span data-text="A"></span>
-    <span data-text="G"></span>
-    <span data-text="N"></span>
-    <span data-text="E"></span>
-    <span data-text="T"></span>
-    <span data-text="Y"></span>
-    <span data-text="P"></span>
-    <span data-text="E"></span>
-    <p>
-        <a href="https://github.com/noahbuscher/Pixel-Picker" style="float: right;">Special thanks</a>
+    <a href="https://github.com/noahbuscher/Pixel-Picker" style="float: right;">Special thanks</a>
     </p>
 </body>

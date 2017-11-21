@@ -18,6 +18,7 @@ var matrixColorOne = [199, 23, 23];
 var flagInit = true;
 var dataResult;
 var dataResultForMCU;
+var dataURL;
 
 // window.onload = function () {
 //   startInit();
@@ -255,7 +256,7 @@ function startInit() {
       var selectedCell = map[findCellIndex(x, y)];
 
       if (selectedCell == undefined) return;
-      
+
       //console.log(selectedCell);
       var xPos = parseInt(selectedCell.x) / selectedCell.width;
       var yPos = parseInt(selectedCell.y) / selectedCell.height;
@@ -263,19 +264,18 @@ function startInit() {
       // console.log(currentColor);
       // console.log(matrixColorOne);
 
-      if((xPos <  matrixCollumns) && (yPos < matrixRows))
-      {
+      if ((xPos < matrixCollumns) && (yPos < matrixRows)) {
         var is_same = (currentColor.length == matrixColorOne.length) && currentColor.every(function (element, index) {
           return element === matrixColorOne[index];
         });
         //console.log(is_same);
-  
+
         if (is_same) {
           matrix[yPos][xPos] = 1;
         }
         else matrix[yPos][xPos] = 0;
       }
-      
+
       updateHandler(findCellIndex(x, y));
 
       ctx.fillStyle = arrayToRgb(currentColor);
@@ -292,8 +292,8 @@ function startInit() {
         // '#ff0000', '#0000ff',
         // '#ffff00', '#008000'
       ],
-      borderColor: 'black', 
-      
+      borderColor: 'black',
+
       // '#878787'
     }, options);
 
@@ -368,29 +368,26 @@ function startInit() {
 
 function buttonClick() {
   // save canvas image as data url (png format by default)
-  var dataURL = document.getElementById('pixel-picker').toDataURL();
-  console.log(dataURL);
+  dataURL = document.getElementById('pixel-picker').toDataURL();
+  //console.log(dataURL);
   // set canvasImg image src to dataURL
   // so it can be saved as an image
-  //document.getElementById('canvasImg').src = dataURL;
+  document.getElementById('canvasImg').src = dataURL;
   //console.log(matrix);
   dataResult = '';
   dataResultForMCU = '{';
   var buf;
-  for(var i = 0; i<matrixCollumns; i++ )
-  {
+  for (var i = 0; i < matrixCollumns; i++) {
     buf = '';
-    for (var j = 7; j >= 0; j--)
-    {
+    for (var j = 7; j >= 0; j--) {
       buf += matrix[j][i].toString();
     }
     dataResultForMCU += '0x';
     // console.log(buf);
     // console.log(parseInt(buf, 2).toString(16));
-    if(parseInt(buf,2) <= 0xF)
-    {
-      dataResult +=0;
-      dataResultForMCU +=0;
+    if (parseInt(buf, 2) <= 0xF) {
+      dataResult += 0;
+      dataResultForMCU += 0;
     }
     dataResult += parseInt(buf, 2).toString(16);
 
@@ -398,21 +395,18 @@ function buttonClick() {
     dataResultForMCU += ',';
   }
 
-  for(var i = 0; i<matrixCollumns; i++ )
-  {
+  for (var i = 0; i < matrixCollumns; i++) {
     buf = '';
-    for (var j = 15; j >= 8; j--)
-    {
+    for (var j = 15; j >= 8; j--) {
       buf += matrix[j][i].toString();
     }
-    
+
     // console.log(buf);
     // console.log(parseInt(buf, 2).toString(16));
     dataResultForMCU += '0x';
-    if(parseInt(buf,2) <= 0xF)
-    {
-      dataResult +=0;
-      dataResultForMCU +=0;
+    if (parseInt(buf, 2) <= 0xF) {
+      dataResult += 0;
+      dataResultForMCU += 0;
     }
     dataResult += parseInt(buf, 2).toString(16);
 
@@ -421,9 +415,54 @@ function buttonClick() {
   }
 
   //dataResultForMCU += '}';
-  dataResultForMCU = dataResultForMCU.replace(/,$/,'}');
-  // console.log(dataResultForMCU);
+  dataResultForMCU = dataResultForMCU.replace(/,$/, '}');
+  //console.log(dataResultForMCU);
 
 
 
 }
+
+$(function () {
+  $('#dataToSend').submit(function () {
+    var errors = false;
+    // $(this).find('input, textarea').each(function(){
+    //   if( $.trim( $(this).val() ) == '' ) {
+    //     errors = true;
+    //     $(this).next().text( 'Не заполнено поле ' + $(this).prev().text() );
+    //   }
+    // });
+    // console.log('#data');
+    if (!errors) {
+      buttonClick();
+
+      var data = $('#dataToSend').serialize();
+      data += "&img=" + dataURL.replace(/data:image\/png;base64,/, '');
+      //console.log(data);
+      $.ajax({
+        url: 'send.php',
+        type: 'POST',
+        data: data,
+        beforeSend: function () {
+          $('#submit').next().text('Відправляю');
+        },
+        success: function(res){
+          console.log(res);
+					// if( res == 1 ){
+					// 	$('#dataToSend').find('input:not(#submit), textarea').val('');
+					// 	$('#submit').next().empty();
+					// 	alert('Письмо отправлено');
+					// }else{
+					// 	$('#submit').next().empty();
+					// 	alert('Ошибка отправки');
+					// }
+        },
+        error: function(){
+					alert('Ошибка!');
+				}
+      });
+
+    }
+
+    return false;
+  });
+});
