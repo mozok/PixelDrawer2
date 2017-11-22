@@ -32,7 +32,14 @@ function startInit() {
     }
   }
 
-  //console.log(matrix);
+  // var el = document.getElementById("pixel-picker");
+
+  // el.addEventListener("touchstart", handleStart, false);
+  // el.addEventListener("touchend", handleEnd, false);
+  // // el.addEventListener("touchcancel", handleCancel, false);
+  // el.addEventListener("touchmove", handleMove, false);
+
+  // console.log(matrix);
 }
 
 
@@ -361,6 +368,35 @@ function startInit() {
       isDragging = false;
     });
 
+
+
+    // $(c).on('touchstart', function (event) {
+    //   //var isRightClick = ('which' in event && event.which === 3) || ('button' in event && event.button === 2);
+
+    //   isDragging = true;
+
+    //   var x = Math.floor((event.pageX - $(c).offset().left));
+    //   var y = Math.floor((event.pageY - $(c).offset().top));
+
+    //   chooseColor(x, y, isRightClick);
+    //   colorCell(x, y);
+    // });
+
+    // // When a cell is moved over
+    // $(c).on('touchmove', function (event) {
+    //   if (!isDragging) return;
+
+    //   var x = Math.floor((event.pageX - $(c).offset().left));
+    //   var y = Math.floor((event.pageY - $(c).offset().top));
+
+    //   colorCell(x, y);
+    // });
+
+    // // Turn dragging off when we mouse up
+    // $(c).on('touchend', function () {
+    //   isDragging = false;
+    // });
+
     return this;
   };
 
@@ -418,7 +454,7 @@ function buttonClick() {
   dataResultForMCU = dataResultForMCU.replace(/,$/, '}');
   //console.log(dataResultForMCU);
 
-
+// console.log(matrix);
 
 }
 
@@ -437,7 +473,7 @@ $(function () {
 
       var data = $('#dataToSend').serialize();
       data += "&img=" + dataURL;
-      data += "&imgData" + dataResultForMCU;
+      data += "&imgData=" + dataResultForMCU;
       //console.log(data);
       $.ajax({
         url: 'send.php',
@@ -446,20 +482,20 @@ $(function () {
         beforeSend: function () {
           // $('#submit').next().text('Відправляю');
         },
-        success: function(res){
+        success: function (res) {
           //console.log(res);
-					if( res == 1 ){
-						// $('#dataToSend').find('input:not(#submit), textarea').val('');
-						// $('#submit').next().empty();
-						alert('Письмо отправлено');
-					}else{
-						// $('#submit').next().empty();
-						alert('Ошибка отправки');
-					}
+          if (res == 1) {
+            // $('#dataToSend').find('input:not(#submit), textarea').val('');
+            // $('#submit').next().empty();
+            alert('Лист відправлено');
+          } else {
+            // $('#submit').next().empty();
+            alert('Помилка відправки');
+          }
         },
-        error: function(){
-					alert('Ошибка!');
-				}
+        error: function () {
+          alert('Помилка!');
+        }
       });
 
     }
@@ -467,3 +503,30 @@ $(function () {
     return false;
   });
 });
+
+// function handleStart(evt) {
+//   evt.preventDefault();
+//   isDragging = true;
+
+//   var x = Math.floor((event.pageX - $(c).offset().left));
+//   var y = Math.floor((event.pageY - $(c).offset().top));
+
+//   chooseColor(x, y, isRightClick);
+//   colorCell(x, y);
+// }
+
+// function handleMove(evt) {
+//   evt.preventDefault();
+
+//   if (!isDragging) return;
+
+//   var x = Math.floor((event.pageX - $(c).offset().left));
+//   var y = Math.floor((event.pageY - $(c).offset().top));
+
+//   colorCell(x, y);
+// }
+
+// function handleEnd(evt) {
+//   evt.preventDefault();
+//   isDragging = false;
+// }

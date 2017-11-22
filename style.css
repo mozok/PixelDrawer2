@@ -4,6 +4,9 @@ body {
     /* margin: 0; */
     height: 100%; 
     min-height:100%;
+    
+    min-width:100%;
+    width: 100%;
     margin-bottom: 60px;
     /* padding: 0 0 1em 0; */
     /* background-color:#333;  */
@@ -353,17 +356,17 @@ body {
 
     /* @font-face { font-family: Christmass; src: url('2000.ttf'); }  */
     
-    .textDesign{
+.textDesign{
         font-family: 'CyrillicChancellor', arial;
         font-size: 30px; 
         text-shadow: 4px 4px 4px #aaa;
         /* text-transform: uppercase; */
         /* letter-spacing: 3px; */
         /* font-style: italic; */
-    }
+}
 
 
-    .footer {
+.footer {
     position: fixed;
     bottom: 0;
     width: 100%;

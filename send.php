@@ -32,7 +32,7 @@ if($_POST){
         $contact = 'Unknown';
     }
 
-    if(array_key_exists('contact', $_POST))
+    if(array_key_exists('imgData', $_POST))
     {
         $imgDataMCU = $_POST['imgData'];
     }
@@ -62,10 +62,10 @@ if($_POST){
 
     if (!$mail->send()) {
         // $msg .= "Mailer Error: " . $mail->ErrorInfo;
-        $answer = '1';
+        $answer = '0';
     } else {
         // $msg .= "Message sent!";
-        $answer = '0';
+        $answer = '1';
     }
     die( $answer );
 }
