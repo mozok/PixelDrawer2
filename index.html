@@ -2,8 +2,14 @@
 <html>
 
 <head>
-        <meta charset="utf-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
     <title>New Year Pixel Drawer</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+        crossorigin="anonymous">
 
     <link href="http://allfont.ru/allfont.css?fonts=cyrillicchancellor" rel="stylesheet" type="text/css" />
 
@@ -487,31 +493,51 @@
         <canvas height="320" width="1280" id="pixel-picker" style='border: 5px solid black; border-radius: 5px;'></canvas>
     </center>
 
-    <!-- <button onclick="buttonClick()" class="button"  align = 'center'>
-            Save
-         </button> -->
-    <form id="dataToSend" style="margin:10px;">
-        <!-- style="color: #111; font-family: 'Open Sans Condensed', sans-serif; font-size: 25px; font-weight: 700; line-height: 25px; padding: 20px 30px; text-transform: uppercase;" -->
-        <label for="name" class="textDesign">
-            Iм'я:</label>
-            <br>
-        <input type="text" id="name" name="name" size="52">
-        <br>
-        <label class="textDesign" for="work">
-            Мiсце роботи/навчання:</label>
-            <br>
-        <input type="text" id="work" name="work" size="52">
-        <br>
-        <label class="textDesign" for="contact">
-            Контактна адреса (email, facebook): </label>
-            <br>
-        <input type="text" id="contact" name="contact" size="52">
-        <br>
-        <br>
-        <input id="submit" type="submit" name="submit" value="Вiдправити" class="textDesign"> </button><span></span>
-    </form>
-    <img id="canvasImg">
+    <!-- style="margin:10px;" -->
+    <div class="container">
+        <form id="dataToSend" style="margin: 0 auto;">
+            <div class="form-row align-items-center">
+                <div class="col-auto">
+                    <!-- <label for="name">Iм'я:</label> -->
+                    <input type="text" class="form-control mb-2 mb-sm-0" id="name" placeholder="Введіть ім'я">
+                </div>
+                <div class="col-sm-3">
+                    <!-- <label class="textDesign" for="work">Мiсце роботи/навчання:</label> -->
+                    <input type="text" class="form-control" id="work" name="work" placeholder="Мiсце роботи/навчання">
+                </div>
+                <div class="col-sm-3">
+                    <!-- <label class="textDesign" for="contact">Контактна адреса (email, facebook): </label> -->
+                    <input type="text" class="form-control" id="contact" name="contact" placeholder="Контакти (email, facebook)">
+                </div>
+                <div class="col-auto">
+                    <input id="submit" type="submit" name="submit" value="Вiдправити" class="btn btn-primary"> </button>
+                    <!-- <span></span> -->
+                </div>
+            </div>
+        </form>
+    </div>
 
-    <a href="https://github.com/noahbuscher/Pixel-Picker" style="float: right;">Special thanks</a>
-    </p>
+    <!-- <img id="canvasImg"> -->
+    <!-- <div>
+        <label class="textDesign" style="float: left; margin: 10px; font-size: 20px; ">Зворотнiй зв'язок: coworking.shostka@gmail.com</label>
+        <a class="textDesign" href="https://www.facebook.com/CoWorking.Shostka/">
+            Facebook</a>
+        <a href="https://github.com/noahbuscher/Pixel-Picker" style="float: right; margin: 20px">Special thanks</a>
+    </div> -->
+
+    <footer class="footer">
+        <div class="container">
+            <span class="text-muted">
+                <div>
+                    <label style="float: left; margin: 10px; font-size: 20px; ">Зворотнiй зв'язок: coworking.shostka@gmail.com</label>
+                    <a href="https://www.facebook.com/CoWorking.Shostka/" class="fa fa-facebook"></a>
+                    <a href="https://github.com/noahbuscher/Pixel-Picker" style="float: right; margin: 20px">Special thanks</a>
+                </div>
+            </span>
+        </div>
+    </footer>
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script> -->
 </body>
+
+</html>

@@ -369,10 +369,10 @@ function startInit() {
 function buttonClick() {
   // save canvas image as data url (png format by default)
   dataURL = document.getElementById('pixel-picker').toDataURL();
-  console.log(dataURL);
+  //console.log(dataURL);
   // set canvasImg image src to dataURL
   // so it can be saved as an image
-  document.getElementById('canvasImg').src = dataURL;
+  // document.getElementById('canvasImg').src = dataURL;
   //console.log(matrix);
   dataResult = '';
   dataResultForMCU = '{';
@@ -436,25 +436,26 @@ $(function () {
       buttonClick();
 
       var data = $('#dataToSend').serialize();
-      data += "&img=" + dataURL;//.replace(/data:image\/png;base64,/, '');
+      data += "&img=" + dataURL;
+      data += "&imgData" + dataResultForMCU;
       //console.log(data);
       $.ajax({
         url: 'send.php',
         type: 'POST',
         data: data,
         beforeSend: function () {
-          $('#submit').next().text('Відправляю');
+          // $('#submit').next().text('Відправляю');
         },
         success: function(res){
-          console.log(res);
-					// if( res == 1 ){
-					// 	$('#dataToSend').find('input:not(#submit), textarea').val('');
-					// 	$('#submit').next().empty();
-					// 	alert('Письмо отправлено');
-					// }else{
-					// 	$('#submit').next().empty();
-					// 	alert('Ошибка отправки');
-					// }
+          //console.log(res);
+					if( res == 1 ){
+						// $('#dataToSend').find('input:not(#submit), textarea').val('');
+						// $('#submit').next().empty();
+						alert('Письмо отправлено');
+					}else{
+						// $('#submit').next().empty();
+						alert('Ошибка отправки');
+					}
         },
         error: function(){
 					alert('Ошибка!');
