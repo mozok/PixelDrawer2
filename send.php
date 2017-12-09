@@ -34,10 +34,22 @@ if($_POST){
 
     if(array_key_exists('imgData', $_POST))
     {
-        $imgDataMCU = $_POST['imgData'];
+        $imgData = $_POST['imgData'];
+
+        // $imgDataForMCU = '{';
+        // $imgDataSize = sizeof($imgData);
+        // for ($i = 0; i < $imgDataSize; $i += 2)
+        // {
+        //     $imgDataForMCU .= '0x';
+        //     $imgDataForMCU .= substr($imgData, i, 2);
+        //     $imgDataForMCU .= ',';
+        // }
+        // $imgDataForMCU = substr($imgDataForMCU, 0, -1);
+        // $imgDataForMCU .= '}';
     }
     else {
-        $imgDataMCU = 'Blank';
+        $imgData = 'Blank';
+        $imgDataForMCU = 'None';
     }
     
 
@@ -47,7 +59,7 @@ if($_POST){
     $mail->isHTML(true);
 
     $mail->Subject = $name;
-    $mail->Body = "Name: $name <br> Work: $work <br> Contact: $contact <br> Img Data for MCU: $imgDataMCU";
+    $mail->Body = "Name: $name <br> Work: $work <br> Contact: $contact <br> Img Data: $imgData <br> Img Data for MCU: $imgDataForMCU";
     
     if(array_key_exists('img', $_POST))
     {

@@ -473,7 +473,7 @@ $(function () {
 
       var data = $('#dataToSend').serialize();
       data += "&img=" + dataURL;
-      data += "&imgData=" + dataResultForMCU;
+      data += "&imgData=" + dataResult;
       //console.log(data);
       $.ajax({
         url: 'send.php',
